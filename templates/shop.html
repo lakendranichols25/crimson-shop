@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crimson Shop</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>CRIMSON SHOP</h1>
+
+        <nav>
+            <a href="/">HOME</a>
+            <a href="/shop">SHOP</a>
+            <a href="/gallery">GALLERY</a>
+            <a href="/contact">CONTACT</a>
+        </nav>
+    </header>
+
+
+    <main class="shop">
+
+        <h2>MY COLLECTION</h2>
+
+        <p class="shop-intro">
+            Original artwork from the darkness.
+        </p>
+
+
+        <!-- AUTOMATIC IMAGE SHOP -->
+
+        <div class="shop-grid">
+
+            {% for image in images %}
+
+            <div class="product">
+
+                <div class="shop-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/' + image) }}"
+                        alt="{{ image }}"
+                        draggable="false"
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <h3>{{ image }}</h3>
+
+                    <p class="price">$10.00</p>
+
+                    <a href="https://cash.app/$LakendraJones5"
+   class="buy-btn"
+   target="_blank"
+   rel="noopener noreferrer">
+    BUY NOW — PAY $10
+</a>
+                </div>
+
+            </div>
+
+            {% else %}
+
+            <p class="no-images">
+                No artwork has been added yet.
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <p>© 2026 Crimson Shop</p>
+
+    </footer>
+
+
+   <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
